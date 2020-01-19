@@ -88,7 +88,7 @@ const App = () => {
           </section>
 
           <section className="items col s12 m6">
-            <h2>Potluck items</h2>
+            <h2>Current items</h2>
             <ul className="items-list collection"> 
               { currentItems.map(item => {
                 return (
