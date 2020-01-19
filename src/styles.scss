@@ -20,8 +20,9 @@ body {
 
 
 h2 {
+  font-size: 1.6rem;
   font-weight: 500;
-  margin: 0 0 1.8rem;
+  margin: 1.2rem 0 1.8rem;
 }
 
 strong {
@@ -34,10 +35,6 @@ strong {
   padding: 4rem 0;
 }
 
-.app .container .row {
-  display: flex;
-}
-
 .row .col {
   padding: 0 2rem;
 }
@@ -46,82 +43,85 @@ strong {
 ------------------------*/
 .nav {
   padding: 0 2rem;
+
+  .brand-logo {
+    font-size: 1.6rem;
+    font-weight: 400;
+    position: relative;
+  }
+
+  a {
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 0 1.4rem;
+  }
 }
 
-.nav .brand-logo {
-  font-size: 1.6rem;
-  font-weight: 400;
-  position: relative;
-}
-
-.nav a {
-  font-size: 1.1rem;
-  font-weight: 400;
-  padding: 0 1.4rem;
-}
-
-/* Form - add item
+/* Add item
 ------------------------*/
-.row .add-item {
+.app .add-item {
   padding-left: 0;
+  margin-left: 0 !important;
   padding-bottom: 2rem;
-}
 
-.add-item h2 {
-  font-size: 1.6rem;
-  margin-top: 1.2rem;
-}
+  .input-field {
+    margin-top: 2.2rem;
+  }
 
-.add-item .input-field {
-  margin-top: 2.2rem;
-}
-
-.add-item .btn {
-  height: auto;
-  font-weight: 500;
-  line-height: 1;
-  margin-top: 1rem;
-  padding: 1rem 1.6rem;
+  .btn {
+    height: auto;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 1rem;
+    padding: 1rem 1.6rem;
+  }
 }
 
 /* Item list
 ------------------------*/
-.row .items {
+.app .items {
+  padding-left: 0;
   padding-right: 0;
+
+  .item {
+    display: flex;
+    align-items: center;
+    padding: 1.4rem 2rem;
+  
+    p {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  
+    span {
+      display: block;
+      font-size: 0.96rem;
+      margin-top: 0.2rem;
+    }
+  
+    button {
+      background: none;
+      cursor: pointer;
+      border: none;
+      margin-left: auto;
+    }
+
+    i {
+      color: #e57373;
+      display: inline-block;
+      transition: 0.2s all ease-in-out;
+
+      &:hover {
+        color: #ef5350;
+      }
+    }
+  }
 }
 
-.items .item {
-  display: flex;
-  align-items: center;
-  padding: 1.4rem 2rem;
-
-  p {
-    margin: 0;
-    font-size: 1.2rem;
+/* Media queries
+------------------------*/
+@media(min-width: 768px) {
+  .app .row {
+    display: flex;
   }
-
-  span {
-    display: block;
-    font-size: 0.96rem;
-    margin-top: 0.2rem;
-  }
-
-  button {
-    background: none;
-    cursor: pointer;
-    border: none;
-    margin-left: auto;
-  }
-}
-
-
-
-.item i {
-  color: #e57373;
-  display: inline-block;
-  transition: 0.2s all ease-in-out;
-}
-
-.item i:hover {
-  color: #ef5350;
 }
