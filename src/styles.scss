@@ -1,0 +1,127 @@
+/* Global
+------------------------*/
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #212121;
+  background-color: #fff;
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+h2 {
+  font-weight: 500;
+  margin: 0 0 1.8rem;
+}
+
+strong {
+  font-weight: 500;
+}
+
+/* Layout
+------------------------*/
+.app {
+  padding: 4rem 0;
+}
+
+.app .container .row {
+  display: flex;
+}
+
+.row .col {
+  padding: 0 2rem;
+}
+
+/* Nav
+------------------------*/
+.nav {
+  padding: 0 2rem;
+}
+
+.nav .brand-logo {
+  font-size: 1.6rem;
+  font-weight: 400;
+  position: relative;
+}
+
+.nav a {
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 0 1.4rem;
+}
+
+/* Form - add item
+------------------------*/
+.row .add-item {
+  padding-left: 0;
+  padding-bottom: 2rem;
+}
+
+.add-item h2 {
+  font-size: 1.6rem;
+  margin-top: 1.2rem;
+}
+
+.add-item .input-field {
+  margin-top: 2.2rem;
+}
+
+.add-item .btn {
+  height: auto;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
+}
+
+/* Item list
+------------------------*/
+.row .items {
+  padding-right: 0;
+}
+
+.items .item {
+  display: flex;
+  align-items: center;
+  padding: 1.4rem 2rem;
+
+  p {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  span {
+    display: block;
+    font-size: 0.96rem;
+    margin-top: 0.2rem;
+  }
+
+  button {
+    background: none;
+    cursor: pointer;
+    border: none;
+    margin-left: auto;
+  }
+}
+
+
+
+.item i {
+  color: #e57373;
+  display: inline-block;
+  transition: 0.2s all ease-in-out;
+}
+
+.item i:hover {
+  color: #ef5350;
+}
