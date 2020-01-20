@@ -4,7 +4,7 @@ import Nav from './components/nav'
 import "./styles.scss"
 
 const App = () => {
-  const [username, setUsername] = useState('')
+  const [setUsername] = useState('')
   const [currentItem, setItem] = useState('')
   const [currentItems, setItems] = useState([])
   const [user, setUser] = useState('')
@@ -125,8 +125,9 @@ const App = () => {
                       <li key={item.id} className="item collection-item">
                         <p><strong>{item.title}</strong>
                           <span>from {item.user}</span></p>
-                        
-                        <button onClick={ () => removeItem(item.id) }><i className="material-icons">remove_circle_outline</i></button>
+                        { console.log(user.displayName)}
+
+                        {item.user === user.displayName ? <button onClick={ () => removeItem(item.id) }><i className="material-icons">remove_circle_outline</i></button> : '' }
                       </li>
                     )
                   })}
