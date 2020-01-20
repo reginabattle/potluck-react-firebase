@@ -6,7 +6,7 @@ const Nav = props => {
             <a href="/" className="brand-logo left">Potluck</a>
 
             <ul id="nav-mobile" className="right">
-                <li>{props.data ? <a href="/" onClick={props.click}>Log out</a> : <a href="/" onClick={props.click}>Log in</a>}</li>
+                <li className="user-status">{props.data ? <a href="/" onClick={props.click}>Log out <img className="profile-img" src={props.data.photoURL} /></a> : <a href="/" onClick={props.click}>Log in</a>}</li>
             </ul>
         </nav>
     )
