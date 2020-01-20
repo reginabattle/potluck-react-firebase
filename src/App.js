@@ -74,7 +74,7 @@ const App = () => {
     // update item
     const item = {
       title: currentItem,
-      user: username
+      user: user.displayName || user.email
     }
 
     // send to database
@@ -94,42 +94,51 @@ const App = () => {
   return (
     <>
       <Nav data={user} click={user ? logout : login} />
-
       <main className="app container">
         <div className="row">
-          <section className="add-item col s12 m5">
-            <h2>What are you bringing to the potluck?</h2>
+          { user ? 
+            <>
+              <section className="add-item col s12 m5">
+                <h2>What are you bringing to the potluck?</h2>
 
-            <form onSubmit={handleSubmit} autoComplete="off">
-              <div className="input-field">
-                <label htmlFor="name">Name</label>
-                <input id="username" name="username" type="text" onChange={handleChange} value={username} />
-              </div>
+                <form onSubmit={handleSubmit} autoComplete="off">
+                  <div className="input-field">
+                    <label htmlFor="name">Name</label>
+                    <input id="username" name="username" type="text" onChange={handleChange} value={user.displayName || user.email} />
+                  </div>
 
-              <div className="input-field">
-                <label htmlFor="item">Item</label>
-                <input id="item" name="item" type="text" onChange={handleChange} value={currentItem} />
-              </div>
+                  <div className="input-field">
+                    <label htmlFor="item">Item</label>
+                    <input id="item" name="item" type="text" onChange={handleChange} value={currentItem} />
+                  </div>
 
-              <button className="btn grey darken-4">Add item</button>
-            </form>
-          </section>
+                  <button className="btn grey darken-4">Add item</button>
+                </form>
+              </section>
+          
+              <section className="items col s12 m6">
+                <h2>Current items</h2>
 
-          <section className="items col s12 m6">
-            <h2>Current items</h2>
-            <ul className="items-list collection"> 
-              { currentItems.map(item => {
-                return (
-                  <li key={item.id} className="item collection-item">
-                    <p><strong>{item.title}</strong>
-                      <span>from {item.user}</span></p>
-                    
-                    <button onClick={ () => removeItem(item.id) }><i className="material-icons">remove_circle_outline</i></button>
-                  </li>
-                )
-              })}
-            </ul>
-          </section>
+                <ul className="items-list collection"> 
+                  { currentItems.map(item => {
+                    return (
+                      <li key={item.id} className="item collection-item">
+                        <p><strong>{item.title}</strong>
+                          <span>from {item.user}</span></p>
+                        
+                        <button onClick={ () => removeItem(item.id) }><i className="material-icons">remove_circle_outline</i></button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </section> 
+            </> : 
+          
+            'You must login first.'
+          
+          }
+
+
         </div>
       </main>
     </>
