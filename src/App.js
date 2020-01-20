@@ -4,7 +4,7 @@ import Nav from './components/nav'
 import "./styles.scss"
 
 const App = () => {
-  const [setUsername] = useState('')
+  const [username, setUsername] = useState('')
   const [currentItem, setItem] = useState('')
   const [currentItems, setItems] = useState([])
   const [user, setUser] = useState('')
@@ -36,7 +36,6 @@ const App = () => {
   // login
   const login = (e) => {
     e.preventDefault()
-    console.log('logging in...')
     auth.signInWithPopup(provider)
     .then(result => {
       const user = result.user
@@ -47,7 +46,6 @@ const App = () => {
   // logout
   const logout = (e) => {
     e.preventDefault()
-    console.log('logging out...')
     auth.signOut()
     .then(() => {
       setUser('')
@@ -123,7 +121,6 @@ const App = () => {
                       <li key={item.id} className="item collection-item">
                         <p><strong>{item.title}</strong>
                           <span>from {item.user}</span></p>
-                        { console.log(user.displayName)}
 
                         {item.user === user.displayName ? <button onClick={ () => removeItem(item.id) }><i className="material-icons">remove_circle_outline</i></button> : '' }
                       </li>
