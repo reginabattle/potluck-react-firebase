@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { getFirebase } from './firebase'
+import { getFirebase, auth, provider } from './firebase'
 import Nav from './components/nav'
 import "./styles.scss"
 
@@ -7,9 +7,15 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [currentItem, setItem] = useState('')
   const [currentItems, setItems] = useState([])
+  const [user, setUser] = useState('')
 
-  // get items
   useEffect(() => {
+    // check if already logged in
+    auth.onAuthStateChanged(user => {
+      setUser(user)
+    })
+
+    // get items
     const itemsRef = getFirebase().database().ref('items')
     itemsRef.on('value', snapshot => {
       let items = snapshot.val()
@@ -27,7 +33,28 @@ const App = () => {
     })
   }, [])
 
-  // set state
+  // login
+  const login = (e) => {
+    e.preventDefault()
+    console.log('logging in...')
+    auth.signInWithPopup(provider)
+    .then(result => {
+      const user = result.user
+      setUser(user)
+    })
+  }
+
+  // logout
+  const logout = (e) => {
+    e.preventDefault()
+    console.log('logging out...')
+    auth.signOut()
+    .then(() => {
+      setUser('')
+    })
+  }
+
+  // get input values
   const handleChange = e => {
     e.persist();
     const input = e.target.name
@@ -66,12 +93,13 @@ const App = () => {
 
   return (
     <>
-      <Nav />
+      <Nav data={user} click={user ? logout : login} />
 
       <main className="app container">
         <div className="row">
           <section className="add-item col s12 m5">
             <h2>What are you bringing to the potluck?</h2>
+
             <form onSubmit={handleSubmit} autoComplete="off">
               <div className="input-field">
                 <label htmlFor="name">Name</label>

@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import 'firebase/auth'
 import 'firebase/database'
 
 // configuration
@@ -23,3 +24,6 @@ export const getFirebase = () => {
   firebaseCache = firebase
   return firebase
 }
+
+export const provider = new firebase.auth.GoogleAuthProvider()
+export const auth = getFirebase().auth()

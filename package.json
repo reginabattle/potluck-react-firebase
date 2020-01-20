@@ -12,6 +12,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@firebase/app": "0.5.2",
+    "@firebase/auth": "^0.13.4",
     "@firebase/database": "0.5.19",
     "firebase": "7.7.0",
     "node-sass": "^4.13.1",
